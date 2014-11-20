@@ -1,4 +1,4 @@
 gulp-messageformat
 ==================
 
-Gulp plugin for messageformat js
+Gulp plugin for Messageformat
