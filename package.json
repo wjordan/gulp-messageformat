@@ -1,0 +1,21 @@
+{
+  "name": "gulp-messageformat",
+  "version": "0.0.1",
+  "description": "Gulp plugin for messageformat",
+  "main": "index.js",
+  "scripts": {}
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Microx/gulp-messageformat.git"
+  },
+  "keywords": [
+    "Gulp", "Messageformat"
+  ],
+  "author": "Miroslav Jancarik <jancarikmiroslav@gmail.com>",
+	"license": "Apache License, Version 2.0",
+  "dependencies": {
+	  "gulp-util": "^3.0.1",
+	  "messageformat": "^0.2.1",
+	  "through2": "^0.6.3"
+  }
+}
