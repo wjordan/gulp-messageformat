@@ -64,7 +64,7 @@ module.exports = function (options) {
 			'var ' + options.namespace + ' = ' + mf.functions() + ';',
 			parsedFile.join(EOL),
 			'return global["' + options.namespace + '"] = ' + options.namespace + ';',
-			'}(' + options.global + ');'
+			'}(' + options.global + ' || this);'
 		].join(EOL);
 
 		resultFile.contents = new Buffer(result);
