@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Gulp plugin for messageformat",
   "main": "index.js",
-  "scripts": {}
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git@github.com:Microx/gulp-messageformat.git"
