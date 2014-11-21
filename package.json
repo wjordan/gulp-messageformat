@@ -1,6 +1,6 @@
 {
   "name": "gulp-messageformat",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gulp plugin for messageformat",
   "main": "index.js",
   "scripts": {},

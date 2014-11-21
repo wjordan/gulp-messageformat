@@ -50,8 +50,16 @@ module.exports = function (options) {
 			var fileName = path.basename(file.path, path.extname(file.path));
 			var parsed = options.namespace+'["'+fileName+'"] = '+mf.precompileObject(JSON.parse(file.contents.toString())) + ';';
 			parsedFile.push(parsed);
-		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-traceur', err.join('\n'), {
+		} catch (errs) {
+			var message = '';
+
+			if (errs.join) {
+				message = errs.join('\n');
+			} else {
+				message = errs.name + ': ' +  errs.message + '. File: ' + file.relative;
+			}
+
+			this.emit('error', new gutil.PluginError('gulp-messageformat', message, {
 				fileName: file.path,
 				showStack: false
 			}));
@@ -67,7 +75,7 @@ module.exports = function (options) {
 			'var ' + options.namespace + ' = ' + mf.functions() + ';',
 			parsedFile.join(EOL),
 			'return g["' + options.namespace + '"] = ' + options.namespace + ';',
-			'}(' + options.global + ');'
+			'})(' + options.global + ');'
 		].join(EOL);
 
 		resultFile.contents = new Buffer(result);
