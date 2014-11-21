@@ -51,7 +51,10 @@ module.exports = function (options) {
 			var parsed = options.namespace+'["'+fileName+'"] = '+mf.precompileObject(JSON.parse(file.contents.toString())) + ';';
 			parsedFile.push(parsed);
 		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-messageformat', err.join('\n')));
+			this.emit('error', new gutil.PluginError('gulp-traceur', err.join('\n'), {
+				fileName: file.path,
+				showStack: false
+			}));
 		}
 
 		next();
@@ -60,11 +63,11 @@ module.exports = function (options) {
 	function flush(cb) {
 
 		var result = [
-			'(function(global){',
+			'(function(g){',
 			'var ' + options.namespace + ' = ' + mf.functions() + ';',
 			parsedFile.join(EOL),
-			'return global["' + options.namespace + '"] = ' + options.namespace + ';',
-			'}(' + options.global + ' || this);'
+			'return g["' + options.namespace + '"] = ' + options.namespace + ';',
+			'}(' + options.global + ');'
 		].join(EOL);
 
 		resultFile.contents = new Buffer(result);
