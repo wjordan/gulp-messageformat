@@ -69,6 +69,10 @@ module.exports = function (options) {
 	}
 
 	function flush(cb) {
+		if(!resultFile) {
+			cb();
+			return;
+		}
 
 		var result = [
 			'(function(g){',
