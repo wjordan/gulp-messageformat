@@ -9,13 +9,20 @@
     "url": "https://github.com/Microx/gulp-messageformat.git"
   },
   "keywords": [
-    "Gulp", "Messageformat"
+    "Gulp",
+    "Messageformat"
   ],
   "author": "Miroslav Jancarik <jancarikmiroslav@gmail.com>",
-	"license": "Apache License, Version 2.0",
+  "license": "Apache License, Version 2.0",
   "dependencies": {
-	  "gulp-util": "^3.0.1",
-	  "messageformat": "^0.2.1",
-	  "through2": "^0.6.3"
+    "bluebird": "^2.6.0",
+    "gulp-util": "^3.0.1",
+    "messageformat": "^0.2.1",
+    "parallel-transform": "^0.2.2",
+    "promise": "^6.0.1",
+    "slave": "^1.2.2",
+    "through2": "^0.6.3",
+    "tmp": "0.0.24",
+    "webworker-threads": "^0.5.3"
   }
 }
