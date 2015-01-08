@@ -1,9 +1,9 @@
 var MessageFormat = require('messageformat');
-var	EOL = require('os').EOL;
 
-// global, locale, namespace, prepend, append, file
-module.exports = function(string, options) {
-  options = options || {};
+// Options: locale (required), global, namespace, prepend, append
+module.exports = function(data) {
+  var string = data.string,
+    options = data.options || {};
 
   if (!options.locale) {
     console.log('Error: Options `locale` is required.');
@@ -23,8 +23,8 @@ module.exports = function(string, options) {
   try {
     var mf = new MessageFormat(locale, false, namespace);
   } catch (e) {
-    //console.log('MF error: locale = ' + locale);
-    return '';
+    console.log(e.toString());
+    return null;
   }
 
   try {
@@ -36,7 +36,7 @@ module.exports = function(string, options) {
       'return g["' + namespace + '"] = ' + namespace + ';',
       '})(' + options.global + ');',
       options.append
-    ].join(EOL);
+    ].join(require('os').EOL);
   } catch (errs) {
     var message = '';
     if (errs.join) {
